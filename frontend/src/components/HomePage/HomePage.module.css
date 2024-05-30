@@ -1,0 +1,73 @@
+.mainWrapper {
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #ccc;
+}
+
+.mainContent {
+    padding: 40px 50px; /* Top, Right, Bottom, Left */
+    max-width: 1200px; /* Limit the maximum width */
+    margin: 0 auto; /* Center horizontally */
+}
+
+.title {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.section {
+    margin-bottom: 40px;
+}
+
+.sectionTitle {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 20px;
+}
+
+.cardGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+    .cardGrid {
+        grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+    }
+}
+
+.searchBar {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
