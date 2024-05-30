@@ -9,6 +9,7 @@ const HomePage = () => {
     const [error, setError] = useState(null);
     const [planets, setPlanets] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
+    const [refreshData, setRefreshData] = useState(false);
 
     useEffect(() => {
         setLoading(true);
@@ -23,7 +24,7 @@ const HomePage = () => {
                 setError(error.message);
                 setLoading(false);
             });
-    }, []);
+    }, [refreshData]);
 
     if (loading) return (
         <div className={classes.mainWrapper}>
@@ -47,6 +48,7 @@ const HomePage = () => {
             const response = await axios.post('http://localhost:4000/planets/sw-share');
             console.log(response.data.message);
             setLoading(false);
+            setRefreshData(!refreshData);
         } catch (error) {
             console.error(error);
             setError(error.message);
@@ -100,64 +102,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-
-
-
-
-
-// const HomePage = () => {
-//     const [planets, setPlanets] = useState([]);
-//     const [loading, setLoading] = useState(false);
-//     const [error, setError] = useState(null);
-
-//     useEffect(() => {
-//         setLoading(true);
-//         axios
-//             .get('http://localhost:4000/planets/')
-//             .then((response) => {
-//                 setPlanets(response.data.data);
-//                 setLoading(false);
-//             })
-//             .catch((error) => {
-//                 console.log(error);
-//                 setError(error.message);
-//                 setLoading(false);
-//             });
-//     }, []);
-
-//     if (loading) return (
-//         <div className={classes.mainWrapper}>
-//             <main className={classes.mainContent}>
-//                 Loading...
-//             </main>
-//         </div>
-//     );
-//     if (error) return (
-//         <div className={classes.mainWrapper}>
-//             <main className={classes.mainContent}>
-//                 Error: {error}
-//             </main>
-//         </div>
-//     );
-
-//     return (
-//         <div className={classes.mainWrapper}>
-//             <main className={classes.mainContent}>
-//                 <h1 className={classes.title}>StarWikis</h1>
-//                 <section className={classes.section}>
-//                     <h2 className={classes.sectionTitle}>Planets</h2>
-//                     <ul className={classes.cardGrid}>
-//                         {planets.map((planet) => (
-//                             <li key={planet._id} className={classes.card}>
-//                                 <h3>{planet.title}</h3>
-//                                 <p>Population: {planet.population}</p>
-//                             </li>
-//                         ))}
-//                     </ul>
-//                 </section>
-//             </main>
-//         </div>
-//     );
-// };
-
-// export default HomePage;
