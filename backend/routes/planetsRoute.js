@@ -5,35 +5,6 @@ import fetch from 'node-fetch';
 const router = express.Router();
 
 
-
-
-
-// router.post('/sw-share', async (req, res) => {
-//     try {
-//         const response = await fetch('https://swapi.dev/api/planets');
-//         const data = await response.json();
-
-//         let counter = 0;
-//         for (const planetData of data) {
-//             if (counter >= 10) {
-//                 break;
-//             }
-//             const planet = new Planet({
-//                 title: planetData.name,
-//                 population: planetData.population,
-//             });
-//             await planet.save();
-//             counter++;
-//         }
-
-//         res.status(200).send({ message: 'Data fetched and stored successfully' });
-//     } catch (error) {
-//         console.error('Error fetching and storing data:', error);
-//         res.status(500).send({ message: 'Internal Server Error', error: error.message });
-//     }
-// });
-
-
 router.post('/sw-share', async (req, res) => {
     try {
         const response = await fetch('https://swapi.dev/api/planets');
@@ -71,17 +42,6 @@ router.post('/sw-share', async (req, res) => {
         res.status(500).send({ message: 'Internal Server Error', error: error.message });
     }
 });
-
-
-
-
-
-
-
-
-
-
-
 
 
 router.get('/:id', async (request, response) => {
